@@ -369,7 +369,7 @@ const translations = {
   "Create": "Crear",
   "Upload photo": "Subir imagen",
   "New contacts view": "Nueva vista de contactos",
-  "Quickly find and email frequent contacts.": "Busca y correo contactos recurrentes",
+  "Quickly find and email frequent contacts.": "Encuentre y envíe correos electrónicos rápidamente a contactos frecuentes.",
   "Try it": "Pruebalo ahora",
   "Got it": "Entendido",
   "Top": "Más usados",
@@ -385,6 +385,14 @@ const translations = {
   "Create subfolder": "Crear subcarpeta",
   "Show folder menu": "Mostrar menu de carpeta",
   "Clean your Inbox": "Limpiar tu correo",
+  "Download all attachments as a zip file": "Descargar todos los archivos adjuntos como un archivo zip",
+  "Download": "Descargar",
+  "Increase zoom": "Aumentar zoom",
+  "Decrease zoom": "Reducir zoom",
+  "Next attachment": "Siguiente archivo adjunto",
+  "Previous attachment": "Archivo adjunto anterior",
+  "Page": "Página",
+  "of": "de",
   // Add more translations as needed
 };
 
