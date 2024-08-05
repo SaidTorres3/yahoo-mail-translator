@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "Yahoo Mail Translator",
+  "version": "1.0",
+  "description": "Translate Yahoo Mail interface to Spanish",
+  "content_scripts": [
+    {
+      "matches": ["https://*.mail.yahoo.com/*"],
+      "js": ["translate.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "https://*.mail.yahoo.com/"
+  ]
+}
