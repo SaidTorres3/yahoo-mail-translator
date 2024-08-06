@@ -423,5 +423,7 @@
   "Conversation was successfully marked as Spam": "La conversación ha sido marcada como Spam",
   "Conversation was moved to Inbox": "La conversación ha sido movida a la bandeja de entrada",
   "Conversation moved to": "La conversación ha sido movida a ",
-  "Conversations were successfully marked as Spam": "Las conversaciones han sido marcadas como Spam"
+  "Conversations were successfully marked as Spam": "Las conversaciones han sido marcadas como Spam",
+  "Conversation moved to Archive.": "La conversación ha sido movida a Archivado",
+  "Conversation moved to Inbox": "La conversación ha sido movida a la bandeja de entrada"
 }
