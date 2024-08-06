@@ -402,6 +402,20 @@ const translations = {
   "Relevance": "Relevancia",
   "No preview": "Sin vista previa",
   "Clear": "Borrar",
+  "Make your inbox your own by picking a theme.": "Haz que tu correo sea como quieras, eligiendo un tema.",
+  "Based on your prior mailbox, we picked this theme just for you. We think you'll love it.": "Según tu correo anterior, hemos escogido este tema solo para ti. Te encantará.",
+  "Theme saved. For more ways to personalize, go to": "Tema guardado. Para más formas de personalizar, dirígete a",
+  "Star an email and easily come back to it later": "Destaca un correo y ven a verlo de manera sencilla más tarde",
+  "Try now": "Pruebalo ahora",
+  "Maybe later": "Quizá más tarde",
+  "Keep track of your most important emails. View starred emails here.": "Mantenga un seguimiento de tus correos más importantes. Ve los correos destacados aqui.",
+  "New!": "Nuevo!",
+  "Try the new Calendar!": "Prueba el nuevo calendario!",
+  "Preview upcoming appointments and quickly schedule events right from your inbox.": "Vea las citas futuras y planifique eventos de manera sencilla desde tu bandeja de entrada.",
+  "Try calendar": "Pruebe el calendario",
+  "Compact compose is now available": "Redacción compacta ahora está disponible",
+  "Set as default": "Establecer como predeterminado",
+
   // Add more translations as needed
 };
 
