@@ -19,6 +19,5 @@
       "run_at": "document_end"
     }
   ],
-  "permissions": ["activeTab", "storage"],
-  "host_permissions": ["https://*.mail.yahoo.com/"]
+  "permissions": ["activeTab", "storage"]
 }
