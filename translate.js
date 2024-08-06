@@ -37,6 +37,7 @@ const translations = {
   "Right align": "Alinear a la derecha",
   "Increase indent": "Aumentar la sangría",
   "Bulleted list": "Lista de viñetas",
+  "Bulleted List": "Lista de viñetas",
   "Numbered list": "Lista numerada",
   "Decrease indent": "Reducir la sangría",
   "Reply": "Responder",
@@ -415,7 +416,17 @@ const translations = {
   "Try calendar": "Pruebe el calendario",
   "Compact compose is now available": "Redacción compacta ahora está disponible",
   "Set as default": "Establecer como predeterminado",
-
+  "Search for messages from this sender": "Buscar mensajes de este remitente",
+  "Delete this message": "Borrar este mensaje",
+  "Undo": "Deshacer",
+  "Your": "Tu ",
+  "Message": "Mensaje",
+  "message": "mensaje",
+  "has been sent.": " ha sido enviado.",
+  "Conversation was successfully marked as Spam": "La conversación ha sido marcada como Spam",
+  "Conversation was moved to Inbox": "La conversación ha sido movida a la bandeja de entrada",
+  "Conversation moved to": "La conversación ha sido movida a ",
+  "Conversations were successfully marked as Spam": "Las conversaciones han sido marcadas como Spam",
   // Add more translations as needed
 };
 
