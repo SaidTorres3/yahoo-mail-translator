@@ -115,7 +115,7 @@ const translations = {
   "Contains": "Contiene",
   "Attachment": "Adjuntos",
   "Photo": "Foto",
-  "Calendar invite": "Invitación de calendario",
+  "Calendar invite": "Invitación en calendario",
   "Reset": "Borrar todo",
   "Date: Newest on top": "Fecha: Nuevos arriba",
   "Date: Oldest on top": "Fecha: Antiguos arriba",
@@ -393,6 +393,15 @@ const translations = {
   "Previous attachment": "Archivo adjunto anterior",
   "Page": "Página",
   "of": "de",
+  "Add keywords": "Añadir palabras clave",
+  "Menu, select groups of messages. Press Enter to expand menu. Press right arrow for more functions": "Menu, selecciona grupos de mensajes. Presiona Enter para expandir el menu. Presiona la flecha derecha para ver más funciones",
+  "Check all messages, 0 messages checked. Press down arrow to go to messages. For JAWS, turn PC Cursor off with Insert Z and press down arrow. Press right arrow for more functions": "Revisa todos los mensajes, 0 mensajes revisados. Presiona la flecha hacia abajo para ir a los mensajes. Para JAWS, desactiva el Cursor del PC con Insertar Z y presiona la flecha hacia abajo. Presiona la flecha hacia la derecha para más funciones.",
+  "Empty trash folder": "Vaciar la papelera de reciclaje",
+  "Yesterday": "Ayer",
+  "Attachments": "Archivos adjuntos",
+  "Relevance": "Relevancia",
+  "No preview": "Sin vista previa",
+  "Clear": "Borrar",
   // Add more translations as needed
 };
 
