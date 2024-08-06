@@ -396,21 +396,37 @@ const translations = {
   // Add more translations as needed
 };
 
+function replaceSpecialCharacters(text) {
+  return text.replace(/Ã/g, 'Ñ');
+}
+
 function translateText(node) {
   try {
     if (node.nodeType === 3) { // Text node
-      const text = node.nodeValue.trim();
+      let text = replaceSpecialCharacters(node.nodeValue.trim());
       if (translations[text]) {
         node.nodeValue = translations[text];
+      } else {
+        node.nodeValue = text; // Update the text even if there's no translation
       }
     } else if (node.nodeType === 1) { // Element node
       // Handle placeholder attribute
-      if (node.placeholder && translations[node.placeholder]) {
-        node.placeholder = translations[node.placeholder];
+      if (node.placeholder) {
+        let placeholder = replaceSpecialCharacters(node.placeholder);
+        if (translations[placeholder]) {
+          node.placeholder = translations[placeholder];
+        } else {
+          node.placeholder = placeholder; // Update the placeholder even if there's no translation
+        }
       }
       // Handle title attribute
-      if (node.title && translations[node.title]) {
-        node.title = translations[node.title];
+      if (node.title) {
+        let title = replaceSpecialCharacters(node.title);
+        if (translations[title]) {
+          node.title = translations[title];
+        } else {
+          node.title = title; // Update the title even if there's no translation
+        }
       }
       // Recursively translate child nodes
       node.childNodes.forEach(translateText);
