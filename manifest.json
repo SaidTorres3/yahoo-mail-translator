@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Yahoo Mail Translator",
+  "name": "Yahoo Mail en Español",
   "version": "1.000",
-  "description": "Translate Yahoo Mail interface to Spanish",
+  "description": "Traduce la interfaz de Yahoo Mail al Español",
   "icons": {
     "128": "icon_128x128.png"
   },
