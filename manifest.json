@@ -6,6 +6,12 @@
   "icons": {
     "128": "icon_128x128.png"
   },
+  "web_accessible_resources": [
+    {
+      "resources": ["translations.json"],
+      "matches": ["https://*.mail.yahoo.com/*"]
+    }
+  ],
   "content_scripts": [
     {
       "matches": ["https://*.mail.yahoo.com/*"],
@@ -13,6 +19,6 @@
       "run_at": "document_end"
     }
   ],
-  "permissions": ["activeTab"],
+  "permissions": ["activeTab", "storage"],
   "host_permissions": ["https://*.mail.yahoo.com/"]
 }
