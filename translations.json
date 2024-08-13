@@ -425,5 +425,10 @@
   "Conversation moved to": "La conversación ha sido movida a ",
   "Conversations were successfully marked as Spam": "Las conversaciones han sido marcadas como Spam",
   "Conversation moved to Archive.": "La conversación ha sido movida a Archivado",
-  "Conversation moved to Inbox": "La conversación ha sido movida a la bandeja de entrada"
+  "Conversation moved to Inbox": "La conversación ha sido movida a la bandeja de entrada",
+  "Quickly narrow your search results.": "Navegue rápidamente tus resultados de búsqueda.",
+  "Find messages, documents and photos sent from a specific contact using search filters.": "Encuentra mensajes, documentos y fotos enviados de un contacto usando filtros de búsqueda.",
+  "Messages": "Mensajes",
+  "me": "yo",
+  "Sending...": "Enviando..."
 }
