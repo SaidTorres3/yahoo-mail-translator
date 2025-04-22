@@ -14,5 +14,5 @@
     if (urlWithoutParams === baseUrl) {
       updateInbox();
     }
-  }, 10000);
+  }, 15000);
 })();
