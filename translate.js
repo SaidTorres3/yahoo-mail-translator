@@ -1,4 +1,7 @@
 // translate.js
+let __ymt_translationObserver = null;
+let __ymt_translationInitialized = false;
+const TRANSLATION_KEY = 'translationEnabled';
 
 function translateText(node, translations, dynamicPatterns) {
   try {
@@ -48,10 +51,12 @@ function translatePage(translations, dynamicPatterns) {
   );
 }
 
-// Carga el JSON de traducciones y arranca la observación
-fetch(chrome.runtime.getURL('translations.json'))
-  .then(res => res.json())
-  .then(translations => {
+function startTranslation() {
+  if (__ymt_translationInitialized) return; // evitar doble init
+  __ymt_translationInitialized = true;
+  fetch(chrome.runtime.getURL('translations.json'))
+    .then(res => res.json())
+    .then(translations => {
     const dynamicPatterns = [
       // 1) "Uncheck all messages, 1 message checked."
       {
@@ -146,12 +151,42 @@ fetch(chrome.runtime.getURL('translations.json'))
     ];
 
     // Observa cambios en el DOM para retraducir dinámicamente
-    const observer = new MutationObserver(() =>
-      translatePage(translations, dynamicPatterns)
-    );
-    observer.observe(document.body, { childList: true, subtree: true });
+      __ymt_translationObserver = new MutationObserver(() =>
+        translatePage(translations, dynamicPatterns)
+      );
+      __ymt_translationObserver.observe(document.body, { childList: true, subtree: true });
+      translatePage(translations, dynamicPatterns);
+    })
+    .catch(err => console.error('Error loading translations:', err));
+}
 
-    // Traduce al cargar la página
-    translatePage(translations, dynamicPatterns);
-  })
-  .catch(err => console.error('Error loading translations:', err));
+function stopTranslation() {
+  if (__ymt_translationObserver) {
+    __ymt_translationObserver.disconnect();
+    __ymt_translationObserver = null;
+  }
+}
+
+function initToggle() {
+  if (!chrome?.storage?.sync) {
+    // Sin storage => activar por defecto
+    startTranslation();
+    return;
+  }
+  chrome.storage.sync.get({ [TRANSLATION_KEY]: true }, (res) => {
+    if (res[TRANSLATION_KEY]) startTranslation();
+  });
+  chrome.storage.onChanged.addListener((changes, area) => {
+    if (area !== 'sync') return;
+    if (changes[TRANSLATION_KEY]) {
+      const newVal = changes[TRANSLATION_KEY].newValue;
+      if (newVal) {
+        startTranslation();
+      } else {
+        stopTranslation();
+      }
+    }
+  });
+}
+
+initToggle();

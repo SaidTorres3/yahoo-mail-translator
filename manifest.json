@@ -1,10 +1,19 @@
 {
   "manifest_version": 3,
   "name": "Yahoo Mail en Español",
-  "version": "2.000",
-  "description": "Traduce la interfaz de Yahoo Mail al Español y actualiza los correos en la bandeja de entrada",
+  "version": "3.000",
+  "description": "Traduce la interfaz de Yahoo Mail al Español y permite configurar el refresco automático de la bandeja de entrada",
   "icons": {
     "128": "icon_128x128.png"
+  },
+  "permissions": ["storage"],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "action": {
+    "default_title": "Yahoo Mail en Español",
+    "default_popup": "options.html"
   },
   "web_accessible_resources": [
     {

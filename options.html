@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Opciones - Yahoo Mail en Español</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { font-family: system-ui, Arial, sans-serif; margin: 18px; color:#222; max-width: 720px; }
+    @media (prefers-color-scheme: dark) { body { color:#ddd; background:#1e1e1e; } fieldset { border-color:#444; } }
+    h1 { font-size: 1.28rem; margin:0 0 14px; }
+    fieldset { border:1px solid #ccc; padding:18px 20px 20px; border-radius:10px; }
+    legend { padding:0 6px; font-weight:600; }
+    label { display:flex; align-items:center; gap:.55rem; font-weight:500; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:18px 26px; }
+    .card { background: #fafafa; border:1px solid #ddd; padding:14px 16px 16px; border-radius:10px; position:relative; }
+    @media (prefers-color-scheme: dark) { .card { background:#2a2a2a; border-color:#3a3a3a; } }
+    .card h2 { margin:0 0 10px; font-size:1.05rem; }
+    .row { margin-bottom:12px; }
+    input[type=number] { width:120px; padding:4px 6px; }
+    input[type=checkbox] { transform: scale(1.15); }
+    button { background:#6001d2; color:#fff; border:none; padding:9px 18px; border-radius:6px; cursor:pointer; font-weight:500; }
+    button:disabled { opacity:.6; cursor:not-allowed; }
+    #actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:4px; }
+    #status { margin-top:12px; font-size:.9rem; font-weight:500; }
+    small { color:#555; display:block; margin-top:4px; line-height:1.25; }
+  @media (prefers-color-scheme: dark) { small { color:#999; } }
+  footer { margin-top:22px; font-size:.75rem; text-align:center; opacity:.75; }
+  footer a { color:#6001d2; text-decoration:none; }
+  footer a:hover { text-decoration:underline; }
+  @media (prefers-color-scheme: dark) { footer a { color:#b58cff; } }
+  </style>
+</head>
+<body>
+  <h1>Configuración de la Extensión</h1>
+  <fieldset>
+    <legend>Ajustes</legend>
+    <div class="grid">
+      <div class="card" id="card-translate">
+        <h2>Traducción</h2>
+        <div class="row">
+          <label>
+            <input type="checkbox" id="translationEnabled" /> Activar traducción de la interfaz
+          </label>
+        </div>
+        <small>Desmarca para desactivar la traducción automática de textos en Yahoo Mail.</small>
+      </div>
+      <div class="card" id="card-refresh">
+        <h2>Auto Refresco</h2>
+        <div class="row">
+          <label>
+            <input type="checkbox" id="enabled" /> Activar auto refresco de bandeja
+          </label>
+        </div>
+        <div class="row">
+          <label for="interval">Intervalo (segundos):</label>
+          <input type="number" id="interval" min="10" step="1" />
+          <small>Mínimo 10 segundos (por defecto 45).</small>
+        </div>
+      </div>
+    </div>
+    <div id="actions" class="row">
+      <button id="reset" type="button">Restablecer</button>
+    </div>
+    <div id="status" aria-live="polite"></div>
+  </fieldset>
+  <footer>
+    <span><a href="https://github.com/SaidTorres3/yahoo-mail-translator/issues" target="_blank" rel="noopener noreferrer">Reportar un problema o traducción faltante</a></span>
+  </footer>
+  <script src="options.js"></script>
+</body>
+</html>
