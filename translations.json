@@ -459,5 +459,9 @@
   "Filter": "Filtros",
   "Filter by attachments": "Filtrar por adjuntos",
   "Filter by unread": "Filtrar por no leidos",
-  "Sort by Oldest": "Ordenar por más antiguos"
+  "Sort by Oldest": "Ordenar por más antiguos",
+  "Please verify that you want to block messages from the following email senders:": "Por favor, verifica que quieres bloquear mensajes de los siguientes remitentes:",
+  "Block all future emails": "Bloquear todos los correos futuros",
+  "Delete all existing emails": "Borrar todos los correos existentes",
+  "Undo succeeded": "Restablecimiento exitoso"
 }
