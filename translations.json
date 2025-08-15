@@ -463,5 +463,12 @@
   "Please verify that you want to block messages from the following email senders:": "Por favor, verifica que quieres bloquear mensajes de los siguientes remitentes:",
   "Block all future emails": "Bloquear todos los correos futuros",
   "Delete all existing emails": "Borrar todos los correos existentes",
-  "Undo succeeded": "Restablecimiento exitoso"
+  "Undo succeeded": "Restablecimiento exitoso",
+  "Monday": "Lunes",
+  "Tuesday": "Martes",
+  "Wednesday": "Miércoles",
+  "Thursday": "Jueves",
+  "Friday": "Viernes",
+  "Saturday": "Sábado",
+  "Sunday": "Domingo"
 }
