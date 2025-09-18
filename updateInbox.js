@@ -20,6 +20,16 @@
     const targetDiv = document.querySelector('span[data-test-id="folder-label"]');
     if (targetDiv) {
       targetDiv.click();
+
+      setTimeout(() => {
+        const loadingBar = document.querySelector('div[data-test-id="loading-bar"]');
+        if (loadingBar) {
+          loadingBar.className = "W_6D6F h_ZEpajT H_dRA Z_qc p_a I_ZamTeg ah_1MDq3I";
+          log('Elemento loading-bar encontrado');
+        } else {
+          log('Elemento loading-bar no encontrado');
+        }
+      }, 3000); // Espera 3 segundos antes de buscar el loading bar
       log('Inbox actualizado (click en folder-label)');
     } else {
       log('Elemento folder-label no encontrado');
