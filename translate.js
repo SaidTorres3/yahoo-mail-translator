@@ -7,33 +7,40 @@ function translateText(node, translations, dynamicPatterns) {
   try {
     if (node.nodeType === 3) { // Text node
       const original = node.nodeValue;
-      const trimmed = original.trim();
+      const normalized = original.replace(/\u00a0/g, ' ');
+      // Colapsamos múltiples espacios y saltos de línea en uno solo para la búsqueda
+      const searchKey = normalized.trim().replace(/\s+/g, ' ');
 
       // 1) Traducción exacta
-      if (translations[trimmed]) {
-        node.nodeValue = original.replace(trimmed, translations[trimmed]);
+      if (translations[searchKey]) {
+        node.nodeValue = translations[searchKey];
         return;
       }
 
       // 2) Patrones dinámicos
       for (const { regex, replacer } of dynamicPatterns) {
-        const match = regex.exec(trimmed);
+        const match = regex.exec(searchKey);
         if (match) {
           const replacement = replacer(...match.slice(1));
-          node.nodeValue = original.replace(trimmed, replacement);
+          node.nodeValue = replacement;
           return;
         }
       }
     }
     else if (node.nodeType === 1) { // Element node
-      // placeholder
-      if (node.placeholder && translations[node.placeholder]) {
-        node.placeholder = translations[node.placeholder];
-      }
-      // title
-      if (node.title && translations[node.title]) {
-        node.title = translations[node.title];
-      }
+      // Traducción de atributos (placeholder, title, aria-label, alt)
+      const attributes = ['placeholder', 'title', 'aria-label', 'alt'];
+      attributes.forEach(attr => {
+        const val = node.getAttribute(attr);
+        if (val) {
+          // Normalizamos y colapsamos espacios para los atributos también
+          const normalizedVal = val.replace(/\u00a0/g, ' ').trim().replace(/\s+/g, ' ');
+          if (translations[normalizedVal]) {
+            node.setAttribute(attr, translations[normalizedVal]);
+          }
+        }
+      });
+
       // recursión en hijos
       node.childNodes.forEach(child =>
         translateText(child, translations, dynamicPatterns)
