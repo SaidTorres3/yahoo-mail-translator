@@ -19,16 +19,18 @@ function showStatus(msg, timeout = 2200) {
 }
 
 function load() {
-  if (!chrome?.storage?.sync) {
-  els.enabled.checked = DEFAULTS.autoRefreshEnabled;
-  els.translationEnabled.checked = DEFAULTS.translationEnabled;
+  const api = chrome?.storage?.sync || chrome?.storage?.local;
+  if (!api) {
+    els.enabled.checked = DEFAULTS.autoRefreshEnabled;
+    els.translationEnabled.checked = DEFAULTS.translationEnabled;
     els.interval.value = DEFAULTS.autoRefreshIntervalSeconds;
     showStatus('Storage no disponible: usando valores por defecto');
     return;
   }
-  chrome.storage.sync.get(DEFAULTS, (res) => {
-  els.enabled.checked = !!res.autoRefreshEnabled;
-  els.translationEnabled.checked = !!res.translationEnabled;
+  api.get(DEFAULTS, (result) => {
+    const res = result || DEFAULTS;
+    els.enabled.checked = res.autoRefreshEnabled !== undefined ? res.autoRefreshEnabled : DEFAULTS.autoRefreshEnabled;
+    els.translationEnabled.checked = res.translationEnabled !== undefined ? res.translationEnabled : DEFAULTS.translationEnabled;
     els.interval.value = Number(res.autoRefreshIntervalSeconds) || DEFAULTS.autoRefreshIntervalSeconds;
   });
 }
@@ -45,13 +47,16 @@ function save() {
   const translationEnabled = els.translationEnabled.checked;
   const interval = clampInterval(els.interval.value);
   els.interval.value = interval;
-  chrome.storage.sync.set({
-    autoRefreshEnabled: enabled,
-    autoRefreshIntervalSeconds: interval,
-    translationEnabled
-  }, () => {
-    showStatus('Cambios guardados');
-  });
+  const api = chrome?.storage?.sync || chrome?.storage?.local;
+  if (api) {
+    api.set({
+      autoRefreshEnabled: enabled,
+      autoRefreshIntervalSeconds: interval,
+      translationEnabled
+    }, () => {
+      showStatus('Cambios guardados');
+    });
+  }
 }
 
 let saveTimeout = null;

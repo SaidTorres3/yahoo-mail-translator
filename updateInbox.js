@@ -80,23 +80,28 @@
   }
 
   function init() {
-    if (!chrome?.storage?.sync) {
+    const api = chrome?.storage?.sync || chrome?.storage?.local;
+    if (!api) {
       // Fallback si no hay storage: usar defaults
       schedule(DEFAULT_INTERVAL_MS);
       return;
     }
-    chrome.storage.sync.get({
+
+    const defaults = {
       [STORAGE_KEYS.enabled]: true,
       [STORAGE_KEYS.interval]: DEFAULT_INTERVAL_MS / 1000
-    }, applySettings);
+    };
+
+    api.get(defaults, (result) => {
+      applySettings(result || defaults);
+    });
 
     chrome.storage.onChanged.addListener((changes, area) => {
-      if (area !== 'sync') return;
+      // En Firefox area puede ser 'sync' o 'local' dependiendo de la disponibilidad
       if (changes[STORAGE_KEYS.enabled] || changes[STORAGE_KEYS.interval]) {
-        chrome.storage.sync.get({
-          [STORAGE_KEYS.enabled]: true,
-          [STORAGE_KEYS.interval]: DEFAULT_INTERVAL_MS / 1000
-        }, applySettings);
+        api.get(defaults, (result) => {
+          applySettings(result || defaults);
+        });
       }
     });
   }

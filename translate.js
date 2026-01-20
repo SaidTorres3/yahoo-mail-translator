@@ -175,16 +175,20 @@ function stopTranslation() {
 }
 
 function initToggle() {
-  if (!chrome?.storage?.sync) {
+  const api = chrome?.storage?.sync || chrome?.storage?.local;
+  if (!api) {
     // Sin storage => activar por defecto
     startTranslation();
     return;
   }
-  chrome.storage.sync.get({ [TRANSLATION_KEY]: true }, (res) => {
+  
+  const defaults = { [TRANSLATION_KEY]: true };
+  api.get(defaults, (result) => {
+    const res = result || defaults;
     if (res[TRANSLATION_KEY]) startTranslation();
   });
+
   chrome.storage.onChanged.addListener((changes, area) => {
-    if (area !== 'sync') return;
     if (changes[TRANSLATION_KEY]) {
       const newVal = changes[TRANSLATION_KEY].newValue;
       if (newVal) {
