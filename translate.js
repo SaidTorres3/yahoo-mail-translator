@@ -11,9 +11,14 @@ function translateText(node, translations, dynamicPatterns) {
       // Colapsamos múltiples espacios y saltos de línea en uno solo para la búsqueda
       const searchKey = normalized.trim().replace(/\s+/g, ' ');
 
+      if (!searchKey) return;
+
+      const leadingSpace = normalized.match(/^\s*/)[0];
+      const trailingSpace = normalized.match(/\s*$/)[0];
+
       // 1) Traducción exacta
       if (translations[searchKey]) {
-        node.nodeValue = translations[searchKey];
+        node.nodeValue = leadingSpace + translations[searchKey] + trailingSpace;
         return;
       }
 
@@ -22,7 +27,7 @@ function translateText(node, translations, dynamicPatterns) {
         const match = regex.exec(searchKey);
         if (match) {
           const replacement = replacer(...match.slice(1));
-          node.nodeValue = replacement;
+          node.nodeValue = leadingSpace + replacement + trailingSpace;
           return;
         }
       }
@@ -154,6 +159,16 @@ function startTranslation() {
           const translatedMonth = translations[month] || month;
           return `${translatedMonth} ${year}`;
         }
+      },
+      // Search all mail for "..."
+      {
+        regex: /^Search all mail for "([\s\S]*)"$/,
+        replacer: (query) => `Buscar en todo el correo "${query}"`
+      },
+      // Or search the web for "..."
+      {
+        regex: /^Or search the web for "([\s\S]*)"$/,
+        replacer: (query) => `O buscar en la web "${query}"`
       },
     ];
 
